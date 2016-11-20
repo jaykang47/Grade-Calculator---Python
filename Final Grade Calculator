@@ -1,0 +1,55 @@
+print "Final Exam Grade Calculator"
+print "NOTE: Make sure the grades are whole numbers (e.g 90)"
+print "\nWhat are you calculating? \n\
+\na) What you need in the final exam \n\
+b) Your final grade in the class"
+answer = raw_input("Press 'A' or 'B': ")
+answer = answer.strip("'")
+
+if answer.lower() == 'a':
+    print "\n"
+    class_name = raw_input("Class (Course Name): ")
+    current_avg = raw_input("What is your current grade? (%): ")
+    final_weight = raw_input("How much is the final worth? (%): ")
+    desired_avg = raw_input("What is your desired grade? (%): ")
+
+    current_avg = current_avg.strip("%")
+    current_avg = float(current_avg)
+    final_weight = final_weight.strip("%")
+    final_weight = float(final_weight)
+    desired_avg = desired_avg.strip("%")
+    desired_avg = float(desired_avg)
+
+    if final_weight == 0.0:
+        print "No need to worry!"
+    elif final_weight >= 100.0:
+        print "Why you lying"
+    else:
+        remaining_avg = 1.0 - (final_weight/100.0)
+        required_avg = (desired_avg - (remaining_avg * current_avg))/(final_weight/100.0)
+        print "You need a ",required_avg,"% on the ",class_name, "final."
+        print "Good Luck!"
+
+elif answer.lower() == 'b':
+    print "\n"
+    class_name = raw_input("Class (Course Name): ")
+    current_avg = raw_input("What is your current grade? (%): ")
+    final_weight = raw_input("How much is the final worth? (%): ")
+    final_mark = raw_input("What did you get on the final exam? (%): ")
+
+    current_avg = current_avg.strip("%")
+    current_avg = float(current_avg)
+    final_weight = final_weight.strip("%")
+    final_weight = float(final_weight)
+    final_mark = final_mark.strip('%')
+    final_mark = float(final_mark)
+
+    if final_weight == 0.0:
+        print "No need to worry!"
+    elif final_weight >= 100.0:
+        print "Why you lying"
+    else:
+        final_avg = (1.0-(final_weight/100.0))*(current_avg) + ((final_weight/100)*final_mark)
+        print "You ended ",class_name," with a ", final_avg,"%"
+else:
+    print "Choose between 'A' or 'B' please: "
